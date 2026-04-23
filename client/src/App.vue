@@ -1,11 +1,13 @@
 <script setup>
 import WouldYouRather from './components/WouldYouRather.vue'
 
-import { ref } from 'vue'
+import { ref, onMounted } from 'vue'
+import wyrServices from './services/wyrServices'
 
-const wyrQuestion = ref('Live in a house shaped like a triangle or a house shaped like a circle?')
-const wyrAnswer1 = ref('Triangle house')
-const wyrAnswer2 = ref('Circle house')
+
+const wyrQuestion = ref('')
+const wyrAnswer1 = ref('')
+const wyrAnswer2 = ref('')
 
 // this will store the user's answer once they made a choice
 
@@ -15,6 +17,16 @@ function updateUserSelection(userChoice) {
   userSelection.value = `Thanks! You chose ${userChoice}`
 }
 
+onMounted( () => {
+  wyrServices.getRandomWYR().then( (wyrData) => {
+    // expect data to have a question, and 2 answers
+    
+    wyrQuestion.value = wyrData.question
+    wyrAnswer1.value = wyrData.answer1
+    wyrAnswer2.value = wyrData.answer2
+
+  })
+})
 
 </script>
 

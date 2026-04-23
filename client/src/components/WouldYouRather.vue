@@ -11,7 +11,7 @@ const emit = defineEmits([
   'answer-selected'
 ])
 
-const choice = ref('')
+const choice = ref(null)
 
 // function choiceMade() {
 //   // emit envet to tell parent that a user has made a choice
