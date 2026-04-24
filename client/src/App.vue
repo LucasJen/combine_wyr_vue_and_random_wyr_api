@@ -32,7 +32,7 @@ onMounted( () => {
 
 <template>
   <div id="app-component">
-    <h1>Would you Rather?</h1>
+    <h1>Hello! Would you Rather?</h1>
     <WouldYouRather 
       v-bind:question="wyrQuestion"
       v-bind:answer1="wyrAnswer1" 
